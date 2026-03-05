@@ -40,10 +40,10 @@ class SampleData {
         bind(lewandowski, flick);
         bind(yamal, flick);
 
-        Team realMadrid = new Team(1, "Real Madrid", "https://real-madrid-logo.png");
-        Team manCity = new Team(2, "Manchester City", "https://man-city-logo.png");
-        Team liverpool = new Team(3, "Liverpool FC", "https://liverpool-logo.png");
-        Team barcelona = new Team(4, "FC Barcelona", "https://barcelona-logo.png");
+        Team realMadrid = new Team(1, "Real Madrid", "https://tmssl.akamaized.net//images/wappen/head/418.png?lm=1729684474");
+        Team manCity = new Team(2, "Manchester City", "https://tmssl.akamaized.net//images/wappen/head/281.png?lm=1467356331");
+        Team liverpool = new Team(3, "Liverpool FC", "https://tmssl.akamaized.net//images/wappen/big/31.png?lm=1727873452");
+        Team barcelona = new Team(4, "FC Barcelona", "https://tmssl.akamaized.net//images/wappen/head/131.png?lm=1406739548");
 
         // Wiązanie drużyn z zawodnikami (Relacja wiele-do-wielu)
         bind(realMadrid, vinicius);
