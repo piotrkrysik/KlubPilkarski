@@ -58,7 +58,6 @@ public class Coach {
         this.players = players;
     }
 
-    // Zmienione z addMovie na addPlayer
     public void addPlayer(Player p) {
         this.players.add(p);
     }

@@ -13,7 +13,6 @@ public interface TeamDao {
     // Szuka konkretnej drużyny po jej ID
     Team findById(int id);
 
-    // Zmienione z findByMovie(Player m)
     // Pobiera listę drużyn, w których grał dany zawodnik
     List<Team> findByPlayer(Player player);
 

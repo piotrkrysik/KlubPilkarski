@@ -14,11 +14,9 @@ public interface PlayerDao {
     // Szuka zawodnika po jego unikalnym ID
     Player findById(int id);
 
-    // Zmienione z findByDirector na findByCoach
     // Pobiera zawodników przypisanych do konkretnego trenera
     List<Player> findByCoach(Coach coach);
 
-    // Zmienione z findByCinema na findByTeam
     // Pobiera zawodników grających w danej drużynie
     List<Player> findByTeam(Team team);
 

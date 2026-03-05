@@ -19,12 +19,10 @@ public class Team {
     public Team() {
     }
 
-    // To jest metoda, której brakowało na czerwonym screenie
     public void addPlayer(Player p) {
         this.players.add(p);
     }
 
-    // Gettery i Settery
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

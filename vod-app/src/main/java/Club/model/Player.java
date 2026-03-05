@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Player {
 
     private int id;
-    private String name; // To jest Twoje 'title' z poprzedniej wersji
+    private String name;
     private String photoUrl;
     private Coach coach;
     private float marketValue;
@@ -24,11 +24,9 @@ public class Player {
     public Player() {
     }
 
-    // --- DODAJ TĘ METODĘ PONIŻEJ ---
     public String getFullName() {
-        return name; // Zwraca nazwę zawodnika, której szuka PlayerServiceBean
+        return name;
     }
-    // -------------------------------
 
     public void addTeam(Team team) {
         this.teams.add(team);

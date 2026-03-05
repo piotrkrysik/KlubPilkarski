@@ -7,21 +7,19 @@ import org.springframework.stereotype.Component; // Import dla adnotacji @Compon
 
 import java.util.List;
 
-@Component // Adnotacja, dzięki której Spring utworzy ten obiekt w kontekście
+@Component
 public class DummyTeamDao implements TeamDao {
 
     @Override
     public List<Team> findAll() {
-        return List.of(); // Zwraca pustą listę (dostępne od Javy 9)
+        return List.of();
     }
 
     @Override
-    public Team findById(int id) {
-        return null; // Implementacja "dummy" zazwyczaj zwraca null lub puste dane
-    }
+    public Team findById(int id) {return null;}
 
     @Override
     public List<Team> findByPlayer(Player player) {
-        return List.of(); // Kolejna metoda wymagana przez interfejs TeamDao
+        return List.of();
     }
 }

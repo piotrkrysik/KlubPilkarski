@@ -22,7 +22,6 @@ public class PlayerServiceBean implements PlayerService {
     private TeamDao teamDao;
     private PlayerDao playerDao;
 
-    // Poprawione nazwy parametrów w konstruktorze
     public PlayerServiceBean(CoachDao coachDao, TeamDao teamDao, PlayerDao playerDao) {
         this.coachDao = coachDao;
         this.teamDao = teamDao;
@@ -38,13 +37,13 @@ public class PlayerServiceBean implements PlayerService {
     @Override
     public List<Player> getPlayersByCoach(Coach coach) {
         log.info("searching players by coach " + coach.getId());
-        return playerDao.findByCoach(coach); // Pamiętaj o zmianie nazwy metody w PlayerDao
+        return playerDao.findByCoach(coach);
     }
 
     // Odpowiednik szukania filmów w kinie -> zawodnicy w danej drużynie
     public List<Player> getPlayersInTeam(Team team) {
         log.info("searching players in team " + team.getId());
-        return playerDao.findByTeam(team); // Pamiętaj o zmianie nazwy metody w PlayerDao
+        return playerDao.findByTeam(team);
     }
 
     @Override
@@ -89,7 +88,6 @@ public class PlayerServiceBean implements PlayerService {
         log.info("about to add coach " + coach);
         return coachDao.add(coach);
     }
-    @Autowired
     public void setCoachDao(CoachDao coachDao) {
         this.coachDao = coachDao;
     }

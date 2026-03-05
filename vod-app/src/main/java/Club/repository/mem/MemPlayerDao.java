@@ -10,14 +10,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// Zmieniono nazwę klasy z MemMovieDao na MemPlayerDao
 @Primary
 @Component
 public class MemPlayerDao implements PlayerDao {
 
     @Override
     public List<Player> findAll() {
-        // Zakładamy zmianę nazwy listy w SampleData z movies na players
         return SampleData.players;
     }
 
@@ -31,7 +29,6 @@ public class MemPlayerDao implements PlayerDao {
 
     @Override
     public List<Player> findByCoach(Coach coach) {
-        // Zmieniono z findByDirector na findByCoach
         return SampleData.players.stream()
                 .filter(p -> p.getCoach().equals(coach))
                 .collect(Collectors.toList());
@@ -39,7 +36,6 @@ public class MemPlayerDao implements PlayerDao {
 
     @Override
     public List<Player> findByTeam(Team team) {
-        // Zmieniono z findByCinema na findByTeam
         return SampleData.players.stream()
                 .filter(p -> p.getTeams().contains(team))
                 .collect(Collectors.toList());
@@ -47,7 +43,6 @@ public class MemPlayerDao implements PlayerDao {
 
     @Override
     public Player add(Player player) {
-        // Logika generowania ID - szukamy najwyższego obecnego ID i dodajemy 1
         int max = SampleData.players.stream()
                 .mapToInt(Player::getId)
                 .max()
