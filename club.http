@@ -1,0 +1,47 @@
+### Pobierz wszystkie zespoły
+GET http://localhost:8080/webapi/teams
+
+### Pobierz wszystkie zespoly z parametrem
+GET http://localhost:8080/webapi/teams?phrase=foo
+custom-header: custom-value
+Cookie: some-cookie=some-value
+
+### Pobierz zespół po id
+GET http://localhost:8080/webapi/teams/1
+Accept: application/xml
+
+### Pobierz zespoly w ktorych graja zawodnicy
+GET http://localhost:8080/webapi/teams/1/players
+Accept: application/json
+
+### stworz nowy zespol
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+Accept-Language: it
+
+{
+  "name": "Wisla Krakow",
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqGN4iresrGdby0zQbK4GjQqmYgyCFNtiqug&s"
+}
+
+### Pobierz wszystkich graczy
+GET http://localhost:8080/webapi/players
+
+### Pobierz graczy po id
+GET http://localhost:8080/webapi/players/1
+
+### Pobierz graczy grajacych w zespole
+GET http://localhost:8080/webapi/teams/2/players
+
+### Stworz nowego gracza
+POST localhost:8080/webapi/players
+Content-Type: application/json
+
+{
+  "name": "Oskar Pietuszewski",
+  "photoUrl": "https://cdn.przegladsportowy.onet.pl/1/iStk9lBaHR0cHM6Ly9vY2RuLmV1L3B1bHNjbXMvTURBXy8zNDljZTVmNzNhMDAzN2ZiYjczNGNkZTVlZjk4NTZlMi5qcGeSlQPNAvhSzQ2xzQe0kwXNCWDNBOzeAAKhMAehMQQ",
+  "marketValue": 10000000.0,
+  "coachId": 6
+}
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Club</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <a th:href="@{/}"><h1>Pix</h1></a>
+    <h2 th:text="${title}"></h2>
+</header>
+<section>
+    <table>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th> <th>Coach</th>
+            <th>Market Value</th>
+            <th>Teams</th>
+        </tr>
+        <tr th:each="p : ${players}">
+            <td>
+                <img th:src="${p.photoUrl}" alt="player photo" style="width: 50px;"/>
+            </td>
+            <td th:text="${p.name}"></td>
+            <td>
+                <a th:if="${p.coach != null}"
+                   th:href="@{/players(coachId=${p.coach.id})}"
+                   th:text="${p.coach.firstName} + ' ' + ${p.coach.lastName}"></a>
+                <span th:if="${p.coach == null}">No coach</span>
+            </td>
+            <td class="rating" th:text="${p.marketValue}"></td>
+            <td class="search-container">
+                <a class="search" th:href="@{/teams(playerId=${p.id})}">Pokaż drużyny</a>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<footer th:text="${tip}"></footer>
+</body>
+</html>
