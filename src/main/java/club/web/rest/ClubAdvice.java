@@ -27,4 +27,9 @@ public class ClubAdvice {
         log.error("illegal argument provided", ex);
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(ex.getMessage());
     }
+    @ExceptionHandler(Exception.class)
+    ResponseEntity<String> handleException(Exception ex) {
+        log.error("exception", ex);
+        return ResponseEntity.status(HttpStatus.LOOP_DETECTED).body(ex.getMessage());
+    }
 }

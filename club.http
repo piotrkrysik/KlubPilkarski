@@ -18,9 +18,10 @@ Accept: application/json
 POST http://localhost:8080/webapi/teams
 Content-Type: application/json
 Accept-Language: it
+Authorization: Basic dbuser1 dbuser1
 
 {
-  "name": "Wisla Krakow",
+  "name": "Wislf Krakow",
   "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqGN4iresrGdby0zQbK4GjQqmYgyCFNtiqug&s"
 }
 
@@ -41,7 +42,9 @@ Content-Type: application/json
   "name": "Oskar Pietuszewski",
   "photoUrl": "https://cdn.przegladsportowy.onet.pl/1/iStk9lBaHR0cHM6Ly9vY2RuLmV1L3B1bHNjbXMvTURBXy8zNDljZTVmNzNhMDAzN2ZiYjczNGNkZTVlZjk4NTZlMi5qcGeSlQPNAvhSzQ2xzQe0kwXNCWDNBOzeAAKhMAehMQQ",
   "marketValue": 10000000.0,
-  "coachId": 6
+  "coachId": 1
 }
+### wylacz usluge
+POST http://localhost:8080/actuator/shutdown
 
 

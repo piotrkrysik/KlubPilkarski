@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-@Primary
 public class JpaPlayerDao implements PlayerDao {
     @PersistenceContext
     private EntityManager entityManager;

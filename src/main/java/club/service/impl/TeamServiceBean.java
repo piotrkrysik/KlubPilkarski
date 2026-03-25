@@ -6,6 +6,7 @@ import club.repository.TeamDao;
 import club.repository.PlayerDao;
 import club.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class TeamServiceBean implements TeamService {
         log.info("searching teams by players " + m.getId());
         return teamDao.findByPlayer(m);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Team addTeam(Team team) {
         log.info("Adding new team: " + team.getName());

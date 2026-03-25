@@ -14,12 +14,12 @@ public class Player {
     private int id;
     @NotNull
     private String name;
-    @Column(name = "photoUrl")
+    @Column(name = "photo_url")
     private String photoUrl;
     @ManyToOne
     @JoinColumn(name = "coach_id")
     private Coach coach;
-    @Column(name = "marketValue")
+    @Column(name = "market_value")
     private float marketValue;
 
     @ManyToMany

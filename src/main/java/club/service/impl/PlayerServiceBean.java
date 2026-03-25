@@ -8,7 +8,13 @@ import club.model.Coach;
 import club.model.Player;
 import club.service.PlayerService;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,14 +23,16 @@ import java.util.logging.Logger;
 public class PlayerServiceBean implements PlayerService {
 
     private static final Logger log = Logger.getLogger(PlayerServiceBean.class.getName());
-    private CoachDao coachDao;
-    private TeamDao teamDao;
-    private PlayerDao playerDao;
+    private final CoachDao coachDao;
+    private final TeamDao teamDao;
+    private final PlayerDao playerDao;
+    private final PlatformTransactionManager transactionManager;
 
-    public PlayerServiceBean(CoachDao coachDao, TeamDao teamDao, PlayerDao playerDao) {
+    public PlayerServiceBean(CoachDao coachDao, TeamDao teamDao, PlayerDao playerDao, PlatformTransactionManager transactionManager) {
         this.coachDao = coachDao;
         this.teamDao = teamDao;
         this.playerDao = playerDao;
+        this.transactionManager = transactionManager;
     }
 
     @Override
@@ -75,27 +83,27 @@ public class PlayerServiceBean implements PlayerService {
         log.info("searching coach by id " + id);
         return coachDao.findById(id);
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Player addPlayer(Player player) {
         log.info("about to add player " + player.getName());
-        return playerDao.add(player);
+        TransactionStatus ts = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        try{
+            player = playerDao.add(player);
+            if(player.getName().equals("Oskar Pietuszewski")) {
+                throw new RuntimeException("not yet");
+            }
+            transactionManager.commit(ts);
+        } catch (RuntimeException e) {
+            transactionManager.rollback(ts);
+            throw e;
+        }
+        return player;
     }
 
     // Jeśli PlayerService ma też zarządzać trenerami:
     public Coach addCoach(Coach coach) {
         log.info("about to add coach " + coach);
         return coachDao.add(coach);
-    }
-    public void setCoachDao(CoachDao coachDao) {
-        this.coachDao = coachDao;
-    }
-
-    public void setTeamDao(TeamDao teamDao) {
-        this.teamDao = teamDao;
-    }
-
-    public void setPlayerDao(PlayerDao playerDao) {
-        this.playerDao = playerDao;
     }
 }
